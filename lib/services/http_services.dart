@@ -42,11 +42,11 @@ class ApiRequests {
       final response =  await http.get(url);
       return _result(response);
     } on TimeoutException catch (error) {
-      //CacheKeys.checkConnection(false);
+      CacheKeys.checkConnection(false);
       log("TimeOutException: $error");
       return _result({});
     } on SocketException catch (error) {
-      //CacheKeys.checkConnection(false);
+      CacheKeys.checkConnection(false);
       log("SocketException: $error");
       return _result({});
     } catch (error) {
@@ -64,11 +64,11 @@ class ApiRequests {
       );
       return _result(response);
     } on TimeoutException catch (error) {
-      //CacheKeys.checkConnection(false);
+      CacheKeys.checkConnection(false);
       debugPrint("TimeOutException: $error");
       return _result({});
     } on SocketException catch (error) {
-      //CacheKeys.checkConnection(false);
+      CacheKeys.checkConnection(false);
       debugPrint("SocketException: $error");
       return _result({});
     } catch (error) {
@@ -87,11 +87,11 @@ class ApiRequests {
       return _result(response);
     } on TimeoutException catch (error) {
       debugPrint("TimeOutException: $error");
-      //CacheKeys.checkConnection(false);
+      CacheKeys.checkConnection(false);
       return _result({});
     } on SocketException catch (error) {
       debugPrint("SocketException: $error");
-      //CacheKeys.checkConnection(false);
+      CacheKeys.checkConnection(false);
       return _result({});
     } catch (error) {
       debugPrint("Unexpected post error: $error");
@@ -109,11 +109,11 @@ class ApiRequests {
       return _result(response);
     } on TimeoutException catch (error) {
       debugPrint("TimeOutException: $error");
-      //CacheKeys.checkConnection(false);
+      CacheKeys.checkConnection(false);
       return _result({});
     } on SocketException catch (error) {
       debugPrint("SocketException: $error");
-      //CacheKeys.checkConnection(false);
+      CacheKeys.checkConnection(false);
       return _result({});
     } catch (error) {
       debugPrint("Unexpected post error: $error");

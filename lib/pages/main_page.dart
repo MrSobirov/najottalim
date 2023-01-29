@@ -28,7 +28,7 @@ class _MainPageState extends State<MainPage> {
   @override
   void initState() {
     super.initState();
-    // checkConnectionFirst();
+    checkConnectionFirst();
     navBarItems = <BottomNavigationBarItem>[
       customNavBarItem(Icon(Icons.map_sharp) , "Country"),
       customNavBarItem(Icon(Icons.folder) , "File"),
@@ -45,24 +45,22 @@ class _MainPageState extends State<MainPage> {
       _currentTabIndex = index;
     });
   }
-  Future<void> checkConnectionFirst() async {
+ Future<void> checkConnectionFirst() async {
     checkConnection(true);
-    //CacheKeys.checkConnection = checkConnection;
+    CacheKeys.checkConnection = checkConnection;
     Connectivity().onConnectivityChanged.listen((ConnectivityResult result) {
       // Got a new connectivity status!
       debugPrint("ConnectivityResult => " + result.name.toString());
-      CacheKeys.hasInternet = result.name.toString() == "none";
+      CacheKeys.hasInternet = result.name.toString() != "none";
     });
   }
 
   void checkConnection(bool connection) async {
     if(connection) {
       var connectivityResult = await (Connectivity().checkConnectivity());
-      if(connectivityResult == ConnectivityResult.none){
-       // MyDialogs().noInternet(context);
-      }
+      CacheKeys.hasInternet = connectivityResult != ConnectivityResult.none;
     } else {
-     // MyDialogs().noInternet(context);
+      CacheKeys.hasInternet = false;
     }
   }
 
