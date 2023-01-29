@@ -6,7 +6,10 @@ class CountryDetailsPage extends StatelessWidget {
   CountryModel data;
   CountryDetailsPage(this.data);
   TextStyle text() {
-    return TextStyle(fontSize: 20, fontWeight: FontWeight.w300);
+    return TextStyle(
+      fontSize: 20,
+      fontWeight: FontWeight.w300,
+    );
   }
 
   @override
@@ -20,7 +23,7 @@ class CountryDetailsPage extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Container(
-            padding: EdgeInsets.all(10),
+              padding: EdgeInsets.all(10),
               height: 270,
               width: double.infinity,
               child: Image.network(
@@ -39,8 +42,9 @@ class CountryDetailsPage extends StatelessWidget {
                     children: [
                       Text(
                         'Country Name: ',
-                        style:
-                            TextStyle(fontSize: 24, fontWeight: FontWeight.w500),
+                        style: TextStyle(
+                            fontSize: 24, fontWeight: FontWeight.w500),
+                        softWrap: true,
                       ),
                       SizedBox(
                         height: 5,
@@ -48,6 +52,7 @@ class CountryDetailsPage extends StatelessWidget {
                       Text(
                         'Country code: ',
                         style: text(),
+                        softWrap: true,
                       ),
                       SizedBox(
                         height: 5,
@@ -55,6 +60,7 @@ class CountryDetailsPage extends StatelessWidget {
                       Text(
                         'Capital of the Country: ',
                         style: text(),
+                        softWrap: true,
                       ),
                       SizedBox(
                         height: 5,
@@ -62,6 +68,7 @@ class CountryDetailsPage extends StatelessWidget {
                       Text(
                         'Country\'s Currency: ',
                         style: text(),
+                        softWrap: true,
                       ),
                       SizedBox(
                         height: 5,
@@ -69,6 +76,7 @@ class CountryDetailsPage extends StatelessWidget {
                       Text(
                         'Continent code: ',
                         style: text(),
+                        softWrap: true,
                       ),
                       SizedBox(
                         height: 5,
@@ -76,6 +84,7 @@ class CountryDetailsPage extends StatelessWidget {
                       Text(
                         'Continent name: ',
                         style: text(),
+                        softWrap: true,
                       ),
                       SizedBox(
                         height: 5,
@@ -83,6 +92,7 @@ class CountryDetailsPage extends StatelessWidget {
                       Text(
                         'Country emoji: ',
                         style: text(),
+                        softWrap: true,
                       ),
                       SizedBox(
                         height: 5,
@@ -90,71 +100,82 @@ class CountryDetailsPage extends StatelessWidget {
                       Text(
                         'Country Prefix code: ',
                         style: text(),
+                        softWrap: true,
                       ),
                     ],
                   ),
                 ),
-                Container(
-                  padding: EdgeInsets.all(10),
-                  child: Column(
-                    children: [
-                      Text(
-                        data.name,
-                        style:
-                            TextStyle(fontSize: 22, fontWeight: FontWeight.w500),
-                      ),
-                      SizedBox(
-                        height: 5,
-                      ),
-                      Text(
-                        data.code,
-                        style: text(),
-                      ),
-                      SizedBox(
-                        height: 5,
-                      ),
-                      Text(
-                        data.capital,
-                        style: text(),
-                      ),
-                      SizedBox(
-                        height: 5,
-                      ),
-                      Text(
-                        data.currency,
-                        style: text(),
-                      ),
-                      SizedBox(
-                        height: 5,
-                      ),
-                      Text(
-                        data.continentCode,
-                        style: text(),
-                      ),
-                      SizedBox(
-                        height: 5,
-                      ),
-                      Text(
-                        data.continentName,
-                        style: text(),
-                      ),
-                      SizedBox(
-                        height: 5,
-                      ),
-                      Text(
-                        data.emoji,
-                        style: text(),
-                      ),
-                      SizedBox(
-                        height: 5,
-                      ),
-                      Text(
-                        data.phone,
-                        style: text(),
-                      ),
-                    ],
+                Expanded(
+                  // child: Container(
+                  //   padding: EdgeInsets.all(10),
+                    child: Column(
+                      children: [
+                        Text(
+                          data.name,
+                          style: TextStyle(
+                              fontSize: 22, fontWeight: FontWeight.w500, ),
+                          softWrap: true,textAlign: TextAlign.center,
+                        ),
+                        SizedBox(
+                          height: 5,
+                        ),
+                        Text(
+                          data.code,
+                          style: text(),
+                          softWrap: true,
+                        ),
+                        SizedBox(
+                          height: 5,
+                        ),
+                        Text(
+                          data.capital,
+                          style: text(),
+                          softWrap: true,
+                        ),
+                        SizedBox(
+                          height: 5,
+                        ),
+                        Text(
+                          data.currency,
+                          style: text(),
+                          softWrap: true,
+                        ),
+                        SizedBox(
+                          height: 5,
+                        ),
+                        Text(
+                          data.continentCode,
+                          style: text(),
+                          softWrap: true,
+                        ),
+                        SizedBox(
+                          height: 5,
+                        ),
+                        Text(
+                          data.continentName,
+                          style: text(),
+                          softWrap: true,
+                        ),
+                        SizedBox(
+                          height: 5,
+                        ),
+                        Text(
+                          data.emoji,
+                          style: text(),
+                          softWrap: true,
+                        ),
+                        SizedBox(
+                          height: 5,
+                        ),
+                        Text(
+                          data.phone,
+                          style: text(),
+                          softWrap: true,
+                        ),
+                      ],
+                    ),
                   ),
-                ),
+
               ],
             ),
           ),
