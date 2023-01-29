@@ -50,6 +50,12 @@ dependencies:
   cloud_firestore: ^4.3.1
   flutter_downloader: ^1.10.1+2
   http: ^0.13.5
+  open_file: ^3.2.1
+  dio: ^4.0.6
+  permission_handler: ^10.2.0
+  path_provider: ^2.0.12
+  android_path_provider: ^0.3.0
+  device_info_plus:
 
 
 

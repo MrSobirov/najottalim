@@ -6,6 +6,7 @@ import 'package:najottalim/pages/task1/task1_page.dart';
 import 'package:najottalim/pages/task2/task2_page.dart';
 import 'package:najottalim/pages/task3/task3_page.dart';
 import 'package:najottalim/services/cache_values.dart';
+import 'package:permission_handler/permission_handler.dart';
 
 
 
@@ -28,6 +29,7 @@ class _MainPageState extends State<MainPage> {
   @override
   void initState() {
     super.initState();
+    requestPermission();
     checkConnectionFirst();
     navBarItems = <BottomNavigationBarItem>[
       customNavBarItem(Icon(Icons.map_sharp) , "Country"),
@@ -35,6 +37,15 @@ class _MainPageState extends State<MainPage> {
       customNavBarItem(Icon(Icons.add_card_outlined) , "Card"),
     ];
   }
+
+  Future<void> requestPermission() async {
+    if (await Permission.storage.request().isGranted) {
+      print("Permission granted");
+    } else {
+      print("Permission not granted");
+    }
+  }
+
   void changeTabs(int index, {bool langChanged = false}) {
     navBarItems = <BottomNavigationBarItem>[
       customNavBarItem(Icon(Icons.map_sharp) , "Country"),
