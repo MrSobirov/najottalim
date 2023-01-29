@@ -57,9 +57,6 @@ dependencies:
   android_path_provider: ^0.3.0
   device_info_plus:
 
-
-
-
 dev_dependencies:
   flutter_test:
     sdk: flutter
