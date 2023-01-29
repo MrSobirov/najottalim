@@ -15,7 +15,7 @@ class StorageService {
             onCreate: (Database db, int version) async {
               // When creating the db, create the table
               await db.execute(
-                  'CREATE TABLE countries (id INTEGER PRIMARY KEY, name TEXT, value INTEGER, num REAL)');
+                  'CREATE TABLE countries (country varchar(255))');
             }
         );
         List<Map> sqlResponse = await database.rawQuery('SELECT * FROM countries');
@@ -35,7 +35,7 @@ class StorageService {
      Database database = await openDatabase(CacheKeys.databasePath);
      database.delete('countries');
      for(Country item in countries.data.countries) {
-       database.insert('countries', jsonDecode(countryToJson(item)));
+       database.insert('countries', {"country": countryToJson(item)});
      }
      return true;
    } catch (error, stacktrace) {
