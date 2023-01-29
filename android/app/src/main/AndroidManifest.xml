@@ -5,7 +5,7 @@
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.INTERNET" />
    <application
-        android:label="najottalim"
+        android:label="ULTRA INHA"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity
@@ -67,5 +67,8 @@
                android:value="5" />
        </provider>
        <!-- End FlutterDownloader customization -->
+       <meta-data
+           android:name="vn.hunghd.flutterdownloader.NOTIFICATION_ICON"
+           android:resource="@drawable/ic_stat_flutter" />
     </application>
 </manifest>

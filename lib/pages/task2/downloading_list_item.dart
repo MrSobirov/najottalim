@@ -21,7 +21,9 @@ class DownloadListItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     bool completed = data!.task!.status == DownloadTaskStatus.complete;
+    bool running = data!.task!.status == DownloadTaskStatus.running || data!.task!.status == DownloadTaskStatus.paused;
     return Container(
+      width: double.infinity,
       padding: const EdgeInsets.only(left: 16, right: 8),
       child: Row(
         children: [
@@ -37,15 +39,9 @@ class DownloadListItem extends StatelessWidget {
                   overflow: TextOverflow.ellipsis,
                 ),
                 SizedBox(height: 10.h),
-                if(data!.task!.status == DownloadTaskStatus.running || data!.task!.status == DownloadTaskStatus.paused)
-                  Positioned(
-                    left: 0,
-                    right: 0,
-                    bottom: 0,
-                    child: LinearProgressIndicator(
-                      value: data!.task!.progress! / 100,
-                    ),
-                  )
+                LinearProgressIndicator(
+                  value: running ? data!.task!.progress! / 100 : 0,
+                ),
               ],
             ),
           ),
