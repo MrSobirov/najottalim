@@ -6,6 +6,7 @@ import 'package:najottalim/pages/task3/task3_add_card.dart';
 
 import 'package:najottalim/models/cards_model.dart';
 import 'package:najottalim/pages/task3/task3_cubit.dart';
+import 'package:najottalim/repositories/cards_repos.dart';
 
 class TaskThreePage extends StatefulWidget {
   const TaskThreePage({Key? key}) : super(key: key);
@@ -140,7 +141,9 @@ class _TaskThreePageState extends State<TaskThreePage> {
                                               color: Colors.white,
                                             ),
                                             IconButton(
-                                              onPressed: () {},
+                                              onPressed: () {
+                                                CardsRepo().deleteCard(state.cards[i].cardId);
+                                              },
                                               icon: Icon(Icons.delete),
                                               color: Colors.white,
                                             )

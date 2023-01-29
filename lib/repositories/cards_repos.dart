@@ -9,13 +9,13 @@ import 'package:najottalim/services/utils.dart';
 import '../models/cards_model.dart';
 
 class CardsRepo {
-  String firebaseUrl = "https://najottalim-aa473-default-rtdb.firebaseio.com/cards.json";
+  String firebaseUrl = "https://najottalim-aa473-default-rtdb.firebaseio.com/cards/-NMyhEbMlZq5iaLrjx0c.json";
   Future<List<CardsModel>> getCards() async {
     final HttpResult response = await ApiRequests().get(url: firebaseUrl);
     if(response.isSuccess) {
       try{
         print(response.body);
-        return cardsModelFromJson(jsonDecode(response.body)["cards"]);
+        return cardsModelFromJson(jsonDecode(response.body));
       } catch(error, stacktrace) {
         debugPrint("$error, $stacktrace");
         return [];
