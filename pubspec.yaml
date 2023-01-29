@@ -47,6 +47,7 @@ dependencies:
   firebase_messaging: ^14.0.4
   firebase_core: ^2.1.1
   sqflite: ^2.2.4+1
+  cloud_firestore: ^4.3.1
   flutter_downloader: ^1.10.1+2
   http: ^0.13.5
 

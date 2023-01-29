@@ -1,34 +1,18 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:najottalim/pages/task3/task3_add_card.dart';
-import 'package:najottalim/pages/task3/task3_card.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:najottalim/pages/task3/task3_cubit.dart';
 
-class TaskThreePage extends StatelessWidget {
+class TaskThreePage extends StatefulWidget {
   const TaskThreePage({Key? key}) : super(key: key);
 
+  @override
+  State<TaskThreePage> createState() => _TaskThreePageState();
+}
 
+class _TaskThreePageState extends State<TaskThreePage> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('Cards Task'),
-        actions: [
-          IconButton(
-            onPressed: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => AddCard(),
-                ),
-              );
-            },
-            icon: Icon(Icons.add),
-          ),
-        ],
-      ),
-      body: ListView.builder(
-        itemCount: 4,
-        itemBuilder: (ctx, i) => Task3Card(),
-      ),
-    );
+    return Scaffold();
   }
 }
