@@ -8,16 +8,26 @@ import '../models/countries_model.dart';
 
 class StorageService {
   Future<bool> getCountriesFromMemory() async {
-    try{
-      Database database = await openDatabase(CacheKeys.databasePath);
-      List<Map> sqlResponse = await database.rawQuery('SELECT * FROM countries');
-      CachedModels.countries = countryModelFromJson(sqlResponse.toString());
-      return true;
-    } catch(error, stacktrace) {
-      debugPrint("$error, $stacktrace");
+    if(await databaseExists(CacheKeys.databasePath)) {
+      try{
+        Database database = await openDatabase(
+          CacheKeys.databasePath,
+            onCreate: (Database db, int version) async {
+              // When creating the db, create the table
+              await db.execute(
+                  'CREATE TABLE countries (id INTEGER PRIMARY KEY, name TEXT, value INTEGER, num REAL)');
+            }
+        );
+        List<Map> sqlResponse = await database.rawQuery('SELECT * FROM countries');
+        CachedModels.countries = countryModelFromJson(sqlResponse.toString());
+        return true;
+      } catch(error, stacktrace) {
+        debugPrint("$error, $stacktrace");
+        return false;
+      }
+    } else {
       return false;
     }
-
   }
 
   Future<bool> writeCountriesToMemory(CountryModel countries) async {

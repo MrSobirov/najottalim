@@ -33,10 +33,7 @@ class Task1Cubit extends Cubit<Task1State> {
     } else {
       if(update) {
         MyWidgets().showToast("No internet! Connect and try again!!!");
-      } else {
-        emit(Task1Loaded(CachedModels.countries!));
       }
-      
     }
   }
 }
