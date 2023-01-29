@@ -27,7 +27,7 @@ class TaskOnePage extends StatelessWidget {
                   height: 812.h,
                   child: RefreshIndicator(
                     onRefresh: () async {
-                      await BlocProvider.of<Task1Cubit>(cubitCTX).updateCounties();
+                      await BlocProvider.of<Task1Cubit>(cubitCTX).updateScreen();
                     },
                     child: ListView.builder(
                         itemCount: state.countries.length,
