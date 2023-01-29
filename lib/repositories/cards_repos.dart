@@ -9,9 +9,10 @@ import '../models/cards_model.dart';
 
 class CardsRepo {
   Future<List<CardsModel>> getCards() async {
-    final HttpResult response = await ApiRequests().get(slug: "https://najottalim-aa473.firebaseio.com/cards/QW1gvCi1FclMg7aih2no");
+    final HttpResult response = await ApiRequests().get(url: "https://najottalim-aa473.firebaseio.com/cards/QW1gvCi1FclMg7aih2no");
     if(response.isSuccess) {
       try{
+        print(response.body);
         return cardsModelFromJson(jsonDecode(response.body)["cards"]);
       } catch(error, stacktrace) {
         debugPrint("$error, $stacktrace");
@@ -26,7 +27,7 @@ class CardsRepo {
   Future<List<CardsModel>> addCard(Map<String, dynamic> newCard) async {
     CachedModels.cards.add(cardToJson(newCard));
     final HttpResult response = await ApiRequests().post(
-      slug: "https://najottalim-aa473.firebaseio.com/cards/QW1gvCi1FclMg7aih2no",
+      url: "https://najottalim-aa473.firebaseio.com/cards/QW1gvCi1FclMg7aih2no",
       body: {
         "cards": cardsModelToJson(CachedModels.cards)
       }
@@ -42,7 +43,7 @@ class CardsRepo {
     CachedModels.cards.removeWhere((element) => element.cardId == updatingCard.cardId);
     CachedModels.cards.add(updatingCard);
     final HttpResult response = await ApiRequests().post(
-        slug: "https://najottalim-aa473.firebaseio.com/cards/QW1gvCi1FclMg7aih2no",
+        url: "https://najottalim-aa473.firebaseio.com/cards/QW1gvCi1FclMg7aih2no",
         body: {
           "cards": cardsModelToJson(CachedModels.cards)
         }
@@ -56,7 +57,7 @@ class CardsRepo {
   Future<List<CardsModel>> deleteCard(String deletingCardID) async {
     CachedModels.cards.removeWhere((element) => element.cardId == deletingCardID);
     final HttpResult response = await ApiRequests().post(
-        slug: "https://najottalim-aa473.firebaseio.com/cards/QW1gvCi1FclMg7aih2no",
+        url: "https://najottalim-aa473.firebaseio.com/cards/QW1gvCi1FclMg7aih2no",
         body: {
           "cards": cardsModelToJson(CachedModels.cards)
         }
