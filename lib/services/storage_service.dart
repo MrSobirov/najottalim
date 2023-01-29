@@ -11,7 +11,8 @@ class StorageService {
     if(await databaseExists(CacheKeys.databasePath)) {
       try{
         Database database = await openDatabase(
-          CacheKeys.databasePath,
+            CacheKeys.databasePath,
+            version: 1,
             onCreate: (Database db, int version) async {
               // When creating the db, create the table
               await db.execute(
@@ -19,7 +20,7 @@ class StorageService {
             }
         );
         List<Map> sqlResponse = await database.rawQuery('SELECT * FROM countries');
-        CachedModels.countries = countryModelFromJson(sqlResponse.toString());
+        CachedModels.countries = countryModelFromJson({"data": {"country": sqlResponse.toString()}}.toString());
         return true;
       } catch(error, stacktrace) {
         debugPrint("$error, $stacktrace");

@@ -1,9 +1,11 @@
+import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:najottalim/pages/task1/task1_page.dart';
 import 'package:najottalim/pages/task2/task2_page.dart';
 import 'package:najottalim/pages/task3/task3_page.dart';
+import 'package:najottalim/services/cache_values.dart';
 
 
 
@@ -43,21 +45,14 @@ class _MainPageState extends State<MainPage> {
       _currentTabIndex = index;
     });
   }
-/*  Future<void> checkConnectionFirst() async {
+  Future<void> checkConnectionFirst() async {
     checkConnection(true);
     //CacheKeys.checkConnection = checkConnection;
     Connectivity().onConnectivityChanged.listen((ConnectivityResult result) {
       // Got a new connectivity status!
       debugPrint("ConnectivityResult => " + result.name.toString());
-      if(result.name.toString() == "none") {
-        //MyDialogs().noInternet(context);
-      } else {
-        if(CacheKeys.getHomeData) {
-          Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (_) => MainPage()), ModalRoute.withName('/'));
-        }
-      }
+      CacheKeys.hasInternet = result.name.toString() == "none";
     });
-    await MyDialogs().checkUpdateStatus(context);
   }
 
   void checkConnection(bool connection) async {
@@ -69,7 +64,7 @@ class _MainPageState extends State<MainPage> {
     } else {
      // MyDialogs().noInternet(context);
     }
-  }*/
+  }
 
   @override
   Widget build(BuildContext context) {

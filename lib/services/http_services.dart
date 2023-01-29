@@ -9,11 +9,6 @@ import 'cache_values.dart';
 import 'package:flutter/material.dart';
 import 'package:http_parser/http_parser.dart';
 
-class AppConfig {
-  static String baseUrlOld = "https://agro-life.uz/api/v1";
-  static String baseUrl = "https://agrosoft.uz/api/v1";
-}
-
 class MyHttpOverrides extends HttpOverrides{
   @override
   HttpClient createHttpClient(SecurityContext? context){
@@ -42,7 +37,7 @@ class ApiRequests {
   }
 
   Future<HttpResult> get({required String slug}) async {
-    Uri url = Uri.parse("${AppConfig.baseUrl}/$slug");
+    Uri url = Uri.parse(slug);
     try{
       final response =  await http.get(url);
       return _result(response);
@@ -61,7 +56,7 @@ class ApiRequests {
   }
 
   Future<HttpResult> post({required String slug, required Map<String, dynamic> body}) async {
-    Uri url = Uri.parse("${AppConfig.baseUrl}/$slug");
+    Uri url = Uri.parse(slug);
     try {
       final response = await http.post(
         url,
@@ -83,7 +78,7 @@ class ApiRequests {
   }
 
   Future<HttpResult> put({required String slug, required Map<String, dynamic> body}) async {
-    Uri url = Uri.parse("${AppConfig.baseUrl}/$slug");
+    Uri url = Uri.parse(slug);
     try {
       final response = await http.put(
         url,
@@ -105,7 +100,7 @@ class ApiRequests {
   }
 
   Future<HttpResult> delete({required String slug, required Map<String, dynamic> body}) async {
-    Uri url = Uri.parse("${AppConfig.baseUrl}/$slug");
+    Uri url = Uri.parse(slug);
     try {
       final response = await http.delete(
         url,

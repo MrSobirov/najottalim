@@ -62,9 +62,9 @@ class Country {
     name: json["name"],
     phone: json["phone"],
     continent: Continent.fromJson(json["continent"]),
-    capital: json["capital"],
-    currency: json["currency"],
-    emoji: json["emoji"],
+    capital: json["capital"] ?? "",
+    currency: json["currency"] ?? "",
+    emoji: json["emoji"] ?? "",
   );
 
   Map<String, dynamic> toJson() => {

@@ -5,7 +5,6 @@ import '../models/countries_model.dart';
 
 class CountryRepo {
   Future<CountryModel?> getCountriesAPI() async {
-
     final HttpResult response = await ApiRequests().get(slug: "https://najot-exam.free.mockoapp.net/countries");
     if(response.isSuccess) {
       try{
