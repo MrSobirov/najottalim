@@ -1,4 +1,5 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:najottalim/pages/task3/task3_cubit.dart';
@@ -13,6 +14,15 @@ class TaskThreePage extends StatefulWidget {
 class _TaskThreePageState extends State<TaskThreePage> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold();
+    return Scaffold(
+      body: Container(
+        child: ElevatedButton(
+          child: Text("Cards details"),
+          onPressed: (() async {
+
+          }),
+        ),
+      ),
+    );
   }
 }

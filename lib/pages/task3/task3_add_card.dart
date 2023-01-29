@@ -1,4 +1,7 @@
+import 'dart:convert';
+import 'package:http/http.dart' as http;
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class AddCard extends StatefulWidget {
   @override
@@ -107,6 +110,27 @@ class _AddCardState extends State<AddCard> {
                     });
                   }),
             ),
+            Container(
+              height: 50.h,
+              width: 280.w,
+              child: ElevatedButton(
+                  onPressed: (() async {
+                    final  response = await http.post(
+                        Uri.parse('https://najottalim-aa473-default-rtdb.firebaseio.com/cards.json'),
+                        body: jsonEncode(
+                            {
+                              "cardID": "",
+                              "cardName": "",
+                              "cardNumber": "",
+                              "expireDate": "",
+                              "gradientID": "",
+                              "iconImage": true
+                            }
+                        )
+                    );
+                    print(response.body);
+                  }), child: Text("Add")),
+            )
           ],
         ),
       ),

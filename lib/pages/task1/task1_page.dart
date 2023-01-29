@@ -3,8 +3,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:najottalim/models/countries_model.dart';
 import 'package:najottalim/pages/task1/task1_cubit.dart';
-
 import 'county_details.dart';
+
 class TaskOnePage extends StatelessWidget {
   const TaskOnePage({Key? key}) : super(key: key);
 
