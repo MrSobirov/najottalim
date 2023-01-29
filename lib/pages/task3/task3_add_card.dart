@@ -119,12 +119,12 @@ class _AddCardState extends State<AddCard> {
                         Uri.parse('https://najottalim-aa473-default-rtdb.firebaseio.com/cards.json'),
                         body: jsonEncode(
                             {
-                              "cardID": "",
+                              "cardID": UniqueKey(),
                               "cardName": "",
                               "cardNumber": "",
                               "expireDate": "",
                               "gradientID": "",
-                              "iconImage": true
+                              "type": _defaultDropDownValue == "Uzcard"
                             }
                         )
                     );
