@@ -12,6 +12,7 @@ class Task3Cubit extends Cubit<Task3State> {
   Task3Cubit() : super(Task3Loading());
 
   Future<void> getCards() async {
+    
     if(CachedModels.cards.isEmpty) {
       updateScreen(updatingWithData: false);
     }

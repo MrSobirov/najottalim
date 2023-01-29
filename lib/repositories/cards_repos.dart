@@ -9,7 +9,7 @@ import 'package:najottalim/services/utils.dart';
 import '../models/cards_model.dart';
 
 class CardsRepo {
-  String firebaseUrl = "https://najottalim-aa473-default-rtdb.firebaseio.com/cards/QW1gvCi1FclMg7aih2no";
+  String firebaseUrl = "https://najottalim-aa473-default-rtdb.firebaseio.com/cards.json";
   Future<List<CardsModel>> getCards() async {
     final HttpResult response = await ApiRequests().get(url: firebaseUrl);
     if(response.isSuccess) {
