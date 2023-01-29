@@ -42,6 +42,7 @@ class TaskOnePage extends StatelessWidget {
                               print("Fuck");
                             }),
                             child: ListTile(
+                              leading: CircleAvatar(child: Text(item.emoji, style: TextStyle(fontSize: 30),),backgroundColor: Colors.grey,),
                               title: Text(item.name,
                                 style: TextStyle(
                                     fontSize: 16,
