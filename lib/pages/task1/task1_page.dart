@@ -39,10 +39,10 @@ class TaskOnePage extends StatelessWidget {
                                 context,
                                 MaterialPageRoute(builder: (context) =>  CountryDetailsPage(item)),
                               );
-                              print("Fuck");
+
                             }),
                             child: ListTile(
-                              leading: CircleAvatar(child: Text(item.emoji, style: TextStyle(fontSize: 30),),backgroundColor: Colors.grey,),
+                              leading: Text(item.emoji, style: TextStyle(fontSize: 30),),
                               title: Text(item.name,
                                 style: TextStyle(
                                     fontSize: 16,
