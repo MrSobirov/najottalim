@@ -168,7 +168,7 @@ class CountryDetailsPage extends StatelessWidget {
                           height: 5,
                         ),
                         Text(
-                          data.phone,
+                          '+${data.phone}',
                           style: text(),
                           softWrap: true,
                         ),
