@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:najottalim/models/countries_model.dart';
 class CountryDetailsPage extends StatelessWidget {
-  Country data;
+  CountryModel data;
   CountryDetailsPage(this.data);
 
   @override
@@ -15,7 +15,7 @@ class CountryDetailsPage extends StatelessWidget {
         height: 812.h,
         color: Colors.white,
         child: Center(
-          child: Text(data.continent.name),
+          child: Text(data.continentName),
         ),
       ),
     );

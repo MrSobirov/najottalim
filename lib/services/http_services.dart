@@ -7,12 +7,6 @@ import 'package:flutter/foundation.dart';
 import 'package:http/http.dart' as http;
 import 'cache_values.dart';
 import 'package:flutter/material.dart';
-import 'package:http_parser/http_parser.dart';
-
-class AppConfig {
-  static String baseUrlOld = "https://agro-life.uz/api/v1";
-  static String baseUrl = "https://agrosoft.uz/api/v1";
-}
 
 class MyHttpOverrides extends HttpOverrides{
   @override
@@ -41,17 +35,17 @@ class ApiRequests {
     }
   }
 
-  Future<HttpResult> get({required String slug}) async {
-    Uri url = Uri.parse("${AppConfig.baseUrl}/$slug");
+  Future<HttpResult> get({required String url}) async {
+    Uri uri = Uri.parse(url);
     try{
-      final response =  await http.get(url);
+      final response =  await http.get(uri);
       return _result(response);
     } on TimeoutException catch (error) {
-      //CacheKeys.checkConnection(false);
+      CacheKeys.checkConnection(false);
       log("TimeOutException: $error");
       return _result({});
     } on SocketException catch (error) {
-      //CacheKeys.checkConnection(false);
+      CacheKeys.checkConnection(false);
       log("SocketException: $error");
       return _result({});
     } catch (error) {
@@ -60,20 +54,20 @@ class ApiRequests {
     }
   }
 
-  Future<HttpResult> post({required String slug, required Map<String, dynamic> body}) async {
-    Uri url = Uri.parse("${AppConfig.baseUrl}/$slug");
+  Future<HttpResult> post({required String url, required Map<String, dynamic> body}) async {
+    Uri uri = Uri.parse(url);
     try {
       final response = await http.post(
-        url,
+        uri,
         body: jsonEncode(body),
       );
       return _result(response);
     } on TimeoutException catch (error) {
-      //CacheKeys.checkConnection(false);
+      CacheKeys.checkConnection(false);
       debugPrint("TimeOutException: $error");
       return _result({});
     } on SocketException catch (error) {
-      //CacheKeys.checkConnection(false);
+      CacheKeys.checkConnection(false);
       debugPrint("SocketException: $error");
       return _result({});
     } catch (error) {
@@ -82,21 +76,21 @@ class ApiRequests {
     }
   }
 
-  Future<HttpResult> put({required String slug, required Map<String, dynamic> body}) async {
-    Uri url = Uri.parse("${AppConfig.baseUrl}/$slug");
+  Future<HttpResult> put({required String url, required Map<String, dynamic> body}) async {
+    Uri uri = Uri.parse(url);
     try {
       final response = await http.put(
-        url,
+        uri,
         body: jsonEncode(body),
       );
       return _result(response);
     } on TimeoutException catch (error) {
       debugPrint("TimeOutException: $error");
-      //CacheKeys.checkConnection(false);
+      CacheKeys.checkConnection(false);
       return _result({});
     } on SocketException catch (error) {
       debugPrint("SocketException: $error");
-      //CacheKeys.checkConnection(false);
+      CacheKeys.checkConnection(false);
       return _result({});
     } catch (error) {
       debugPrint("Unexpected post error: $error");
@@ -104,21 +98,21 @@ class ApiRequests {
     }
   }
 
-  Future<HttpResult> delete({required String slug, required Map<String, dynamic> body}) async {
-    Uri url = Uri.parse("${AppConfig.baseUrl}/$slug");
+  Future<HttpResult> delete({required String url, required Map<String, dynamic> body}) async {
+    Uri uri = Uri.parse(url);
     try {
       final response = await http.delete(
-        url,
+        uri,
         body: jsonEncode(body),
       );
       return _result(response);
     } on TimeoutException catch (error) {
       debugPrint("TimeOutException: $error");
-      //CacheKeys.checkConnection(false);
+      CacheKeys.checkConnection(false);
       return _result({});
     } on SocketException catch (error) {
       debugPrint("SocketException: $error");
-      //CacheKeys.checkConnection(false);
+      CacheKeys.checkConnection(false);
       return _result({});
     } catch (error) {
       debugPrint("Unexpected post error: $error");

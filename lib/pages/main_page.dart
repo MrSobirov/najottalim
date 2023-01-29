@@ -1,9 +1,11 @@
+import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:najottalim/pages/task1/task1_page.dart';
 import 'package:najottalim/pages/task2/task2_page.dart';
 import 'package:najottalim/pages/task3/task3_page.dart';
+import 'package:najottalim/services/cache_values.dart';
 
 
 
@@ -26,7 +28,7 @@ class _MainPageState extends State<MainPage> {
   @override
   void initState() {
     super.initState();
-    // checkConnectionFirst();
+    checkConnectionFirst();
     navBarItems = <BottomNavigationBarItem>[
       customNavBarItem(Icon(Icons.map_sharp) , "Country"),
       customNavBarItem(Icon(Icons.folder) , "File"),
@@ -43,33 +45,24 @@ class _MainPageState extends State<MainPage> {
       _currentTabIndex = index;
     });
   }
-/*  Future<void> checkConnectionFirst() async {
+ Future<void> checkConnectionFirst() async {
     checkConnection(true);
-    //CacheKeys.checkConnection = checkConnection;
+    CacheKeys.checkConnection = checkConnection;
     Connectivity().onConnectivityChanged.listen((ConnectivityResult result) {
       // Got a new connectivity status!
       debugPrint("ConnectivityResult => " + result.name.toString());
-      if(result.name.toString() == "none") {
-        //MyDialogs().noInternet(context);
-      } else {
-        if(CacheKeys.getHomeData) {
-          Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (_) => MainPage()), ModalRoute.withName('/'));
-        }
-      }
+      CacheKeys.hasInternet = result.name.toString() != "none";
     });
-    await MyDialogs().checkUpdateStatus(context);
   }
 
   void checkConnection(bool connection) async {
     if(connection) {
       var connectivityResult = await (Connectivity().checkConnectivity());
-      if(connectivityResult == ConnectivityResult.none){
-       // MyDialogs().noInternet(context);
-      }
+      CacheKeys.hasInternet = connectivityResult != ConnectivityResult.none;
     } else {
-     // MyDialogs().noInternet(context);
+      CacheKeys.hasInternet = false;
     }
-  }*/
+  }
 
   @override
   Widget build(BuildContext context) {

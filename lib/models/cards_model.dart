@@ -2,7 +2,9 @@ import 'dart:convert';
 
 List<CardsModel> cardsModelFromJson(List cards) => List<CardsModel>.from(cards.map((x) => CardsModel.fromJson(x)));
 
-String cardsModelToJson(List<CardsModel> data) => json.encode(List<dynamic>.from(data.map((x) => x.toJson())));
+List cardsModelToJson(List<CardsModel> data) => List.from(data.map((x) => x.toJson()));
+
+CardsModel cardToJson(Map<String, dynamic> item) => CardsModel.fromJson(item);
 
 class CardsModel {
   CardsModel({
