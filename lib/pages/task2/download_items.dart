@@ -1,12 +1,24 @@
 class DownloadItems {
   static const documents = [
     FileInfo(
-      name: 'Android Programming Cookbook',
-      url: 'https://bilimlar.uz/wp-content/uploads/2021/02/k100001.pdf',
+      name: 'Flutter book',
+      url: 'https://www.tutorialspoint.com/flutter/flutter_tutorial.pdf',
     ),
     FileInfo(
-      name: 'iOS Programming Guide',
+      name: 'Swift Language',
       url: 'https://carlosicaza.com/swiftbooks/SwiftLanguage.pdf',
+    ),
+    FileInfo(
+      name: 'PHP Programming Cookbook',
+      url: 'https://assets.ctfassets.net/nkydfjx48olf/5qFMF3mvitLMahX67i7iOb/028229996c13cbc27a0538f055a41b46/php_cookbook.pdf',
+    ),
+    FileInfo(
+      name: 'LearnJava',
+      url: 'https://www.cs.cmu.edu/afs/cs.cmu.edu/user/gchen/www/download/java/LearnJava.pdf',
+    ),
+    FileInfo(
+      name: 'Complete Guide to Programming in C++',
+      url: 'http://www.lmpt.univ-tours.fr/~volkov/C++.pdf',
     ),
   ];
 }

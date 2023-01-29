@@ -3,7 +3,7 @@ import 'package:meta/meta.dart';
 import 'package:najottalim/models/countries_model.dart';
 import 'package:najottalim/repositories/country_repos.dart';
 import 'package:najottalim/services/cache_values.dart';
-import 'package:najottalim/services/storage_service.dart';
+import 'package:najottalim/pages/task1/storage_service.dart';
 import 'package:najottalim/services/utils.dart';
 
 part 'task1_state.dart';
