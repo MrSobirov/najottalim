@@ -25,28 +25,33 @@ class TaskOnePage extends StatelessWidget {
               return Container(
                   color: Colors.white,
                   height: 812.h,
-                  child: ListView.builder(
-                      itemCount: state.countries.data.countries.length,
-                      itemBuilder: (context , index) {
-                        Country item = state.countries.data.countries[index];
-                        return GestureDetector(
-                          onTap: ((){
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(builder: (context) =>  CountryDetailsPage(item)),
-                            );
-                            print("Fuck");
-                          }),
-                          child: ListTile(
-                            title: Text(item.name,
-                              style: TextStyle(
-                                  fontSize: 16,
-                                  fontWeight: FontWeight.w500
-                              ),),
-                            subtitle: Text(item.capital),
-                          ),
-                        );
-                      }));
+                  child: RefreshIndicator(
+                    onRefresh: () async {
+                      await BlocProvider.of<Task1Cubit>(cubitCTX).updateCounties();
+                    },
+                    child: ListView.builder(
+                        itemCount: state.countries.length,
+                        itemBuilder: (context , index) {
+                          CountryModel item = state.countries[index];
+                          return GestureDetector(
+                            onTap: ((){
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(builder: (context) =>  CountryDetailsPage(item)),
+                              );
+                              print("Fuck");
+                            }),
+                            child: ListTile(
+                              title: Text(item.name,
+                                style: TextStyle(
+                                    fontSize: 16,
+                                    fontWeight: FontWeight.w500
+                                ),),
+                              subtitle: Text(item.capital),
+                            ),
+                          );
+                        }),
+                  ));
             }
             else if (state is Task1NoInternet) {
               return Center(child: Text("You do not have fucking network !!!"),);

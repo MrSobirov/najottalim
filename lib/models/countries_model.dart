@@ -1,49 +1,16 @@
 import 'dart:convert';
 
-CountryModel countryModelFromJson(String str) => CountryModel.fromJson(json.decode(str));
+List<CountryModel> countryModelFromJson(List str) => List<CountryModel>.from(str.map((x) => CountryModel.fromJson(x)));
 
-String countryModelToJson(CountryModel data) => json.encode(data.toJson());
-
-String countryToJson(Country data) => json.encode(data.toJson());
+List<Map<String, dynamic>> countryModelToJson(List<CountryModel> data) => List<Map<String, dynamic>>.from(data.map((x) => x.toJson()));
 
 class CountryModel {
   CountryModel({
-    required this.data,
-  });
-
-  final Data data;
-
-  factory CountryModel.fromJson(Map<String, dynamic> json) => CountryModel(
-    data: Data.fromJson(json["data"]),
-  );
-
-  Map<String, dynamic> toJson() => {
-    "data": data.toJson(),
-  };
-}
-
-class Data {
-  Data({
-    required this.countries,
-  });
-
-  final List<Country> countries;
-
-  factory Data.fromJson(Map<String, dynamic> json) => Data(
-    countries: List<Country>.from(json["countries"].map((x) => Country.fromJson(x))),
-  );
-
-  Map<String, dynamic> toJson() => {
-    "countries": List<dynamic>.from(countries.map((x) => x.toJson())),
-  };
-}
-
-class Country {
-  Country({
     required this.code,
     required this.name,
     required this.phone,
-    required this.continent,
+    required this.continentCode,
+    required this.continentName,
     required this.capital,
     required this.currency,
     required this.emoji,
@@ -52,26 +19,29 @@ class Country {
   final String code;
   final String name;
   final String phone;
-  final Continent continent;
+  final String continentCode;
+  final String continentName;
   final String capital;
   final String currency;
   final String emoji;
 
-  factory Country.fromJson(Map<String, dynamic> json) => Country(
+  factory CountryModel.fromJson(Map<String, dynamic> json) => CountryModel(
     code: json["code"],
     name: json["name"],
     phone: json["phone"],
-    continent: Continent.fromJson(json["continent"]),
-    capital: json["capital"],
-    currency: json["currency"],
-    emoji: json["emoji"],
+    continentCode: json["continent"] != null ? json["continent"]["code"] : json["continentCode"] ?? "",
+    continentName: json["continent"] != null ? json["continent"]["name"] : json["continentName"] ?? "",
+    capital: json["capital"] ?? "",
+    currency: json["currency"] ?? "",
+    emoji: json["emoji"] ?? "",
   );
 
   Map<String, dynamic> toJson() => {
     "code": code,
     "name": name,
     "phone": phone,
-    "continent": continent.toJson(),
+    "continentCode": continentCode,
+    "continentName": continentName,
     "capital": capital,
     "currency": currency,
     "emoji": emoji,
@@ -94,6 +64,6 @@ class Continent {
 
   Map<String, dynamic> toJson() => {
     "code": code,
-    "name": name
+    "name": name,
   };
 }

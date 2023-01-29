@@ -8,7 +8,7 @@ class Task1Loading extends Task1State {}
 class Task1NoInternet extends Task1State {}
 
 class Task1Loaded extends Task1State {
-  final CountryModel countries;
+  final List<CountryModel> countries;
   Task1Loaded(this.countries);
 }
 

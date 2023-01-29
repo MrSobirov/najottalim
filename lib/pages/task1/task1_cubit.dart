@@ -12,11 +12,11 @@ class Task1Cubit extends Cubit<Task1State> {
   Task1Cubit() : super(Task1Loading());
 
   Future<void> getCountries() async {
-    if(CachedModels.countries == null) {
+    if(CachedModels.countries.isEmpty) {
       if(!(await StorageService().getCountriesFromMemory())) {
         updateCounties(update: false);
       } else {
-        emit(Task1Loaded(CachedModels.countries!));
+        emit(Task1Loaded(CachedModels.countries));
       }
     }
   }
@@ -24,9 +24,9 @@ class Task1Cubit extends Cubit<Task1State> {
   Future<void> updateCounties({bool update = true}) async {
     if(CacheKeys.hasInternet) {
       CachedModels.countries = await CountryRepo().getCountriesAPI();
-      if(CachedModels.countries != null) {
-        StorageService().writeCountriesToMemory(CachedModels.countries!);
-        emit(Task1Loaded(CachedModels.countries!));
+      if(CachedModels.countries.isNotEmpty) {
+        StorageService().writeCountriesToMemory(CachedModels.countries);
+        emit(Task1Loaded(CachedModels.countries));
       } else {
         emit(Task1Error(errorText: "Cannot get data from api"));
       }
