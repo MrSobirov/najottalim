@@ -18,45 +18,6 @@ class DownloadListItem extends StatelessWidget {
   final Function(TaskInfo)? onActionTap;
   final Function(TaskInfo)? onCancel;
 
-  @override
-  Widget build(BuildContext context) {
-    bool completed = data!.task!.status == DownloadTaskStatus.complete;
-    bool running = data!.task!.status == DownloadTaskStatus.running || data!.task!.status == DownloadTaskStatus.paused;
-    return Container(
-      width: double.infinity,
-      padding: const EdgeInsets.only(left: 16, right: 8),
-      child: Row(
-        children: [
-          buildLeading(data!.task!)!,
-          Expanded(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  data!.name!,
-                  maxLines: 1,
-                  softWrap: true,
-                  overflow: TextOverflow.ellipsis,
-                ),
-                SizedBox(height: 10.h),
-                LinearProgressIndicator(
-                  value: running ? data!.task!.progress! / 100 : 0,
-                ),
-              ],
-            ),
-          ),
-          IconButton(
-              icon: Icon(Icons.file_copy, color: completed ? Colors.teal : Colors.lightGreenAccent,),
-              onPressed: completed ? () {
-                onTap!(data!.task);
-              } : () {
-                MyWidgets().showToast("Wait a bit!");
-              }),
-        ],
-      ),
-    );
-  }
-
   Widget? buildLeading(TaskInfo task) {
     if (task.status == DownloadTaskStatus.undefined) {
       return IconButton(
@@ -108,5 +69,44 @@ class DownloadListItem extends StatelessWidget {
     } else {
       return null;
     }
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    bool completed = data!.task!.status == DownloadTaskStatus.complete;
+    bool running = data!.task!.status == DownloadTaskStatus.running || data!.task!.status == DownloadTaskStatus.paused;
+    return Container(
+      width: double.infinity,
+      padding: const EdgeInsets.only(left: 16, right: 8),
+      child: Row(
+        children: [
+          buildLeading(data!.task!)!,
+          Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  data!.name!,
+                  maxLines: 1,
+                  softWrap: true,
+                  overflow: TextOverflow.ellipsis,
+                ),
+                SizedBox(height: 10.h),
+                LinearProgressIndicator(
+                  value: running ? data!.task!.progress! / 100 : 0,
+                ),
+              ],
+            ),
+          ),
+          IconButton(
+              icon: Icon(Icons.file_copy, color: completed ? Colors.teal : Colors.lightGreenAccent,),
+              onPressed: completed ? () {
+                onTap!(data!.task);
+              } : () {
+                MyWidgets().showToast("Wait a bit!");
+              }),
+        ],
+      ),
+    );
   }
 }

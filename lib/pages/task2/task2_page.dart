@@ -34,7 +34,7 @@ class _TaskTwoPageState extends State<TaskTwoPage> {
     FlutterDownloader.registerCallback(downloadCallback, step: 1);
     _showContent = false;
     _permissionReady = false;
-    _saveInPublicStorage = false;
+    _saveInPublicStorage = true;
     _prepare();
   }
 
@@ -214,7 +214,6 @@ class _TaskTwoPageState extends State<TaskTwoPage> {
     if (taskId == null) {
       return false;
     }
-
     return FlutterDownloader.open(taskId: taskId);
   }
 
