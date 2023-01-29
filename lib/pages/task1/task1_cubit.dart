@@ -18,14 +18,12 @@ class Task1Cubit extends Cubit<Task1State> {
       } else {
         emit(Task1Loaded(CachedModels.countries));
       }
-    } else {
-      emit(Task1Loaded(CachedModels.countries!));
     }
   }
   
   Future<void> updateCounties({bool update = true}) async {
     if(CacheKeys.hasInternet) {
-      print("here");
+      emit(Task1Loading());
       CachedModels.countries = await CountryRepo().getCountriesAPI();
       if(CachedModels.countries.isNotEmpty) {
         StorageService().writeCountriesToMemory(CachedModels.countries);
