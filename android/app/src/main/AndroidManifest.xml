@@ -1,7 +1,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.ultrainha.najottalim">
-    <uses-permission android:name="android.permission.INTERNET" />
-    <application
+   <application
         android:label="najottalim"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
