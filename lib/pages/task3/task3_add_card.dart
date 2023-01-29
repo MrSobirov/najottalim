@@ -119,15 +119,16 @@ class _AddCardState extends State<AddCard> {
                         Uri.parse('https://najottalim-aa473-default-rtdb.firebaseio.com/cards.json'),
                         body: jsonEncode(
                             {
-                              "cardID": UniqueKey(),
-                              "cardName": "",
-                              "cardNumber": "",
-                              "expireDate": "",
-                              "gradientID": "",
+                              "cardID": UniqueKey().toString(),
+                              "cardName": "Agro Bank",
+                              "cardNumber": "1234 3412 5643 8771",
+                              "expireDate": "10/26",
+                              "gradientID": "1111",
                               "type": _defaultDropDownValue == "Uzcard"
                             }
                         )
                     );
+
                     print(response.body);
                   }), child: Text("Add")),
             )
