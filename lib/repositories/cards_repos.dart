@@ -1,6 +1,6 @@
 import 'dart:convert';
 
-import 'package:cloud_firestore/cloud_firestore.dart';
+
 import 'package:flutter/cupertino.dart';
 import 'package:najottalim/services/cache_values.dart';
 import 'package:najottalim/services/http_services.dart';
@@ -35,7 +35,7 @@ class CardsRepo {
       }
     );
     if(!response.isSuccess) {
-      MyWidgets().showToast("Error occured try again later");
+      MyWidgets().showToast("Error occurred try again later");
     }
     return getCards();
   }
@@ -51,7 +51,7 @@ class CardsRepo {
         }
     );
     if(!response.isSuccess) {
-      MyWidgets().showToast("Error occured try again later");
+      MyWidgets().showToast("Error occurred try again later");
     }
     return getCards();
   }
@@ -65,7 +65,7 @@ class CardsRepo {
         }
     );
     if(!response.isSuccess) {
-      MyWidgets().showToast("Error occured try again later");
+      MyWidgets().showToast("Error occurred try again later");
     }
     return getCards();
   }
