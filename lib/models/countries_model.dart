@@ -4,6 +4,8 @@ CountryModel countryModelFromJson(String str) => CountryModel.fromJson(json.deco
 
 String countryModelToJson(CountryModel data) => json.encode(data.toJson());
 
+String countryToJson(Country data) => json.encode(data.toJson());
+
 class CountryModel {
   CountryModel({
     required this.data,
