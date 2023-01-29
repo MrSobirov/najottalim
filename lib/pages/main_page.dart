@@ -70,7 +70,7 @@ class _MainPageState extends State<MainPage> {
       body: _kTabPages[_currentTabIndex],
       bottomNavigationBar: BottomNavigationBar(
           backgroundColor: Colors.white,
-          selectedItemColor: Colors.grey,
+          selectedItemColor: Colors.yellow,
           unselectedItemColor: Colors.black12,
           showSelectedLabels: true,
           selectedFontSize: 11.sp,

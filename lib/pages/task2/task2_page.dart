@@ -42,25 +42,43 @@ class TaskTwoPage extends StatelessWidget {
         child: ListView.builder(
             itemCount: files.length,
             itemBuilder: (context , index) {
-              return ListTile(
-                leading: IconButton(
-                  onPressed: ((){
+              return GestureDetector(
+                child: ListTile(
+                  leading: Icon(Icons.cloud_download_outlined),
+                  title: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(files[index]["name"]),
+                      SizedBox(height: 6.h,),
+                      Container(
+                        height: 8.h,
+                        width: 280.w,
+                        padding: EdgeInsets.only(top: 1,left: 2,bottom: 1),
+                        decoration: BoxDecoration(
+                          border: Border.all(
+                            color: Colors.grey
+                          ),
+                            color: Colors.white,
+                          borderRadius: BorderRadius.circular(6)
+                        ),
 
-                  }),
-                  icon: Icon(Icons.cloud_download_outlined),
-                ),
-                title: Text(files[index]["name"]),
-                subtitle: Container(
-                  height: 10.h,
-                  width: 280.w,
-                  color: Colors.black,
-                  child: Container(
-                    height: 10.h,
-                    width: 170.w,
-                    color: Colors.blue,
+                        child: Row(
+                          children: [
+                            Container(
+                              height: 4.h,
+                              width: 80.w,
+                              decoration: BoxDecoration(
+                                  color: Colors.blue,
+                                  borderRadius: BorderRadius.circular(6)
+                              ),
+
+                            ),
+                          ],
+                        ),
+                      ),
+                    ],
                   ),
                 ),
-
               );
             })
       ),
